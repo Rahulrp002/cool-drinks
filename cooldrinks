@@ -1,0 +1,29 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract CoolDrinksFestival {
+    uint256 public cupPrice;
+    uint256 public consumedDrinksQuantity;
+
+    function setCupPrice(uint256 _cupPrice) external {
+        // Use the 'require' statement to specify the cup price requirement
+        require(_cupPrice > 0, "Cup price must be greater than zero");
+        
+        // Set the cup price
+        cupPrice = _cupPrice;
+    }
+
+    function DrinksQuantity(uint256 _drinksQuantity) external {
+        // Use the 'assert' statement to ensure drinks quantity is valid
+        assert(_drinksQuantity > 500);
+
+        // Use the 'revert' statement for special conditions
+        if (_drinksQuantity == 1000) {
+            // Revert the transaction and offer a discount
+            revert("Enjoy a discount on your next cup!");
+        }
+
+        // Set the consumed drinks quantity
+        consumedDrinksQuantity = _drinksQuantity;
+    }
+}
